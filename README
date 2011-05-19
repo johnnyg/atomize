@@ -1,0 +1,7 @@
+atomize - A simple python package for generating Atom feeds
+
+This package provides a simple way to construct an Atom Syndicated Format feed.
+One simply constructs a Feed(...) object, providing it information about
+the feed update time, a unique identifer for the feed, its title, author,
+and entries. There are simple object definitions for every construct in
+the Atom 1.0 specification.
