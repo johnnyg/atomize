@@ -16,7 +16,7 @@ except ImportError:
 
 
 __package_name__ = "atomize"
-__version__ = (0, 1, 0)
+__version__ = (0, 1, 1)
 __author__ = "Christopher Wienberg <cwienberg@ict.usc.edu>"
 
 __all__ = ["Feed", "Entry", "AtomError", "Author", "Category", "Content",
@@ -114,7 +114,7 @@ class Feed(object):
 
         if isinstance(self_link, basestring):
             self.elements["self_link"] = Link(self_link, rel="self",
-                                              type="application/atom+xml")
+                                              content_type="application/atom+xml")
         elif isinstance(self_link, Link) and self_link.rel == "self":
             self.elements["self_link"] = self_link
         elif self_link is None:
