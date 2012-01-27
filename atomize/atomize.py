@@ -15,9 +15,8 @@ except ImportError:
     import StringIO
 
 __package_name__ = "atomize"
-__version__ = (0, 1, 1)
-__author__ = "Christopher Wienberg <cwienberg@ict.usc.edu>"
-
+__version__ = (0, 1, 2)
+__author__ = "Christopher Wienberg <cwienberg@ict.usc.edu>, John Garland <johnnybg@gmail.com>"
 __all__ = ["Feed", "Entry", "AtomError", "Author", "Category", "Content",
            "Contributor", "Generator", "Icon", "ID", "Link", "Logo",
            "Published", "Rights", "Source", "Subtitle", "Summary", "Title",

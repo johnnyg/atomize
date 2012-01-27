@@ -8,10 +8,10 @@ import atomize
 
 setup(name="atomize",
       version="%s.%s.%s" % atomize.__version__,
-      author="Christopher Wienberg",
-      author_email="cwienberg@ict.usc.edu",
-      url="http://code.google.com/p/atomize/",
-      download_url="http://code.google.com/p/atomize/downloads/list",
+      author="Christopher Wienberg, John Garland",
+      author_email="cwienberg@ict.usc.edu, johnnybg@gmail.com",
+      url="https://github.com/johnnyg/atomize",
+      download_url="https://github.com/johnnyg/atomize/downloads",
       description="A simple Python package for easily generating Atom feeds",
       long_description="A pure-Python package for easily generating Atom Syndicated Format feeds.",
       package_dir={"": "atomize"},
@@ -19,4 +19,3 @@ setup(name="atomize",
       provides=["atomize"],
       keywords="atom web",
       license="Eclipse Public License 1.0")
-      
