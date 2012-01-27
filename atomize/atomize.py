@@ -4,7 +4,6 @@
 
 import sys
 import datetime
-import codecs
 import mimetypes
 try:
     import xml.etree.cElementTree as ET
@@ -166,7 +165,7 @@ class Feed(object):
 
         """ Writes the Atom feed to the filename given """
 
-        out = codecs.open(filename, "w", encoding=encoding)
+        out = open(filename, "w")
         self._write_to_file(out, encoding)
         out.close()
 
@@ -175,7 +174,7 @@ class Feed(object):
         """ Returns a string of the Atom feed """
 
         feed_string = StringIO.StringIO()
-        self._write_to_file(codecs.getwriter(encoding)(feed_string), encoding)
+        self._write_to_file(feed_string, encoding)
         return feed_string.getvalue()
 
 
@@ -261,8 +260,7 @@ class AtomText(object):
             content_string = StringIO.StringIO()
             content_string.write(self.content)
             content_string.seek(0)
-            reader = codecs.getreader("utf-8")(content_string)
-            tree = ET.parse(reader, parser=ET.XMLParser(encoding="utf-8"))
+            tree = ET.parse(content_string)
             div = tree.getroot()
             div.attrib["xmlns"] = "http://www.w3.org/1999/xhtml"
             elt.append(div)
@@ -338,9 +336,7 @@ class Content(object):
             content_string = StringIO.StringIO()
             content_string.write(self.content)
             content_string.seek(0)
-            content_reader = codecs.getreader("utf-8")(content_string)
-            div_tree = ET.parse(content_reader,
-                                parser=ET.XMLParser(encoding="utf-8"))
+            div_tree = ET.parse(content_string)
             div = div_tree.getroot()
             div.attrib["xmlns"] = "http://www.w3.org/1999/xhtml"
             elt.append(div)
