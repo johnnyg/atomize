@@ -5,6 +5,7 @@
 import sys
 import datetime
 import codecs
+import mimetypes
 try:
     import xml.etree.cElementTree as ET
 except ImportError:
@@ -13,7 +14,6 @@ try:
     import cStringIO as StringIO
 except ImportError:
     import StringIO
-
 
 __package_name__ = "atomize"
 __version__ = (0, 1, 1)
@@ -24,6 +24,7 @@ __all__ = ["Feed", "Entry", "AtomError", "Author", "Category", "Content",
            "Published", "Rights", "Source", "Subtitle", "Summary", "Title",
            "Updated"]
 
+MIME_TYPES = set(mimetypes.types_map.itervalues())
 
 class Feed(object):
 
@@ -309,14 +310,17 @@ class Content(object):
 
         Unless the type is an atom media type, content must be defined. """
 
-        try:
-            if content_type == "text" or content_type == "html":
-                self.content = content
-            elif content_type == "xhtml":
-                self.content = '<div>%s</div>' % content
-        except TypeError:
-            raise AtomError("Content: Must have content defined if the type " +
-                            "is xhtml, html, or text")
+        if content_type in ("xhtml", "html", "text"):
+            if not content:
+                raise AtomError("Content: Must have content defined if the type " +
+                                "is xhtml, html, or text")
+            if content_type == "xhtml":
+                content = '<div>%s</div>' % content
+            self.content = content
+        elif content_type in MIME_TYPES:
+            self.content = content
+        else:
+            raise AtomError("Content: Invalid content_type '%s'" % content_type)
 
         self.type = content_type
         self.src = src
