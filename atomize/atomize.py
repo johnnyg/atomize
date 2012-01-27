@@ -82,7 +82,7 @@ class Feed(object):
         if isinstance(title, basestring):
             self.elements["title"] = Title(title)
         elif isinstance(title, Title):
-            self.elements["titile"] = title
+            self.elements["title"] = title
         else:
             raise AtomError("Feed: title must be a string or a Title object")
 
@@ -552,7 +552,7 @@ class Entry(object):
         if isinstance(title, basestring):
             self.elements["title"] = Title(title)
         elif isinstance(title, Title):
-            self.elements["titile"] = title
+            self.elements["title"] = title
         else:
             raise AtomError("Entry: title must be a string or a Title object")
 
@@ -643,7 +643,7 @@ class Source(object):
         if isinstance(title, basestring):
             self.elements["title"] = Title(title)
         elif isinstance(title, Title):
-            self.elements["titile"] = title
+            self.elements["title"] = title
         elif title is None:
             pass
         else:
