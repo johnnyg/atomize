@@ -142,7 +142,7 @@ class Feed(object):
 
         feed = ET.Element("feed")
         feed.attrib["xmlns"] = "http://www.w3.org/2005/Atom"
-        for value in self.elements.values():
+        for value in self.elements.itervalues():
             if isinstance(value, list):
                 for elt in value:
                     elt.publish(feed)
@@ -588,7 +588,7 @@ class Entry(object):
         """ Used in building the Atom feed's XML Element Tree """
 
         entry = ET.SubElement(parent, "entry")
-        for value in self.elements.values():
+        for value in self.elements.itervalues():
             if isinstance(value, list):
                 for elt in value:
                     elt.publish(entry)
@@ -685,7 +685,7 @@ class Source(object):
         """ Used in building the Atom feed's XML Element Tree """
 
         source = ET.SubElement(parent, "entry")
-        for value in self.elements.values():
+        for value in self.elements.itervalues():
             if isinstance(value, list):
                 for elt in value:
                     elt.publish(source)
