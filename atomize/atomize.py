@@ -561,9 +561,7 @@ class Entry(object):
             self.elements["authors"] = [author]
         elif isinstance(author, list):
             self.elements["authors"] = author
-        elif author is None:
-            pass
-        else:
+        elif author is not None:
             raise AtomError("Entry: author must be a string, list or an " +
                             "Author object")
 
@@ -643,9 +641,7 @@ class Source(object):
             self.elements["title"] = Title(title)
         elif isinstance(title, Title):
             self.elements["title"] = title
-        elif title is None:
-            pass
-        else:
+        elif title is not None:
             raise AtomError("Entry: title must be a string or a Title object")
 
         if isinstance(author, basestring):
@@ -654,9 +650,7 @@ class Source(object):
             self.elements["authors"] = [author]
         elif isinstance(author, list):
             self.elements["authors"] = author
-        elif author is None:
-            pass
-        else:
+        elif author is not None:
             raise AtomError("Entry: author must be a string, list or an " +
                             "Author object")
 
@@ -664,9 +658,7 @@ class Source(object):
             self.elements["updated"] = Updated(updated)
         elif isinstance(updated, Updated):
             self.elements["updated"] = updated
-        elif updated is None:
-            pass
-        else:
+        elif updated is not None:
             raise AtomError("Entry: updated must be a datetime or an " +
                             "Updated object")
 
@@ -674,9 +666,7 @@ class Source(object):
             self.elements["id"] = ID(guid)
         elif isinstance(guid, ID):
             self.elements["id"] = guid
-        elif id is None:
-            pass
-        else:
+        elif id is not None:
             raise AtomError("Entry: guid must be a string or an ID object")
 
     def publish(self, parent):
